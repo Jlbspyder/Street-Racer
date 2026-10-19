@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client"
+  output = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  username String @unique
+  passwordHash String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile PlayerProfile?
+  runs Run[]
+  playerCars PlayerCar[]
+  completions ChallengeCompletion[]
+}
+
+model PlayerProfile {
+  id String @id @default(uuid())
+  userId String @unique
+  totalScore Float @default(0)
+  totalDistance Float @default(0)
+  totalRuns Int @default(0)
+  bestScore Int @default(0)
+  longestDistance Float @default(0)
+  highestSpeed Float @default(0)
+  rewardPoints Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Run {
+  id String @id @default(uuid())
+  userId String
+  submissionId String
+  score Int
+  distance Float
+  duration Float
+  maxSpeed Float
+  averageSpeed Float
+  nearMisses Int @default(0)
+  boostsUsed Int @default(0)
+  collisions Int @default(0)
+  selectedCarId String
+  isValid Boolean @default(true)
+  validationReason String?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  car Car @relation(fields: [selectedCarId], references: [id])
+  completions ChallengeCompletion[]
+
+  @@unique([userId, submissionId])
+  @@index([userId, createdAt])
+  @@index([isValid, score])
+  @@index([isValid, distance])
+  @@index([isValid, maxSpeed])
+  @@index([createdAt])
+}
+
+model Car {
+  id String @id @default(uuid())
+  key String @unique
+  name String
+  topSpeed Float
+  acceleration Float
+  handling Float
+  unlockType String?
+  unlockRequirement Float?
+  isDefault Boolean @default(false)
+  players PlayerCar[]
+  runs Run[]
+}
+
+model PlayerCar {
+  id String @id @default(uuid())
+  userId String
+  carId String
+  unlockedAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  car Car @relation(fields: [carId], references: [id])
+  @@unique([userId, carId])
+}
+
+model DailyChallenge {
+  id String @id @default(uuid())
+  key String @unique
+  title String
+  description String
+  metric String
+  target Float
+  reward Int
+  startsAt DateTime
+  endsAt DateTime
+  completions ChallengeCompletion[]
+  @@index([startsAt, endsAt])
+}
+
+model ChallengeCompletion {
+  id String @id @default(uuid())
+  challengeId String
+  userId String
+  runId String
+  completedAt DateTime @default(now())
+  challenge DailyChallenge @relation(fields: [challengeId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  run Run @relation(fields: [runId], references: [id])
+  @@unique([challengeId, userId])
+  @@index([userId, completedAt])
+}

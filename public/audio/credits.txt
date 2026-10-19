@@ -1,0 +1,14 @@
+﻿Car Engine Loop 96kHz, 4s
+Author: qubodup
+Source: https://opengameart.org/content/car-engine-loop-96khz-4s
+License selected: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+License: https://creativecommons.org/licenses/by/3.0/
+
+The author made this loop from their recording of an Opel Astra 1.6 16V:
+https://freesound.org/people/qubodup/sounds/147243/
+
+Included file: car-engine.wav
+Original archive file: engine-loop/engine-loop-1-normalized.wav
+The recording is redistributed unchanged, with a different filename.
+During gameplay, playback speed, volume and filtering vary with driving input.
+No endorsement by the creator is implied.
