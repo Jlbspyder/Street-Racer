@@ -14,6 +14,10 @@ A browser-based 3D arcade racing game built with React, TypeScript, and Three.js
 - Pause, resume, and locally saved personal best scores.
 - Accounts, saved runs, leaderboards, daily challenges, and unlockable cars through the companion backend.
 
+## Links
+
+Live Site URL: [https://street-racer-ten.vercel.app/](https://street-racer-ten.vercel.app/)
+
 ## Tech stack
 
 React, TypeScript, Vite, Three.js, React Three Fiber, Drei, and Zustand. The backend uses NestJS, Prisma, and PostgreSQL.
@@ -28,8 +32,6 @@ From the project root:
 npm install
 npm run dev
 ```
-
-Open the address printed by Vite, usually `http://localhost:5173`.
 
 Guest play works without the backend. For accounts and saved progression, follow the [backend setup guide](backend/README.md).
 

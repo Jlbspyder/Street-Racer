@@ -30,11 +30,24 @@ export async function bootstrap() {
   console.log(`Street Racer API on port ${config.port}; documentation at /api/docs`)
 }
 
+export function startupErrorMessage(error: unknown) {
+  let message = error instanceof Error ? error.message : 'Unknown startup error'
+  const secrets = [process.env.DATABASE_URL, process.env.JWT_SECRET, process.env.POSTGRES_PASSWORD]
+  try {
+    const url = new URL(process.env.DATABASE_URL ?? '')
+    secrets.push(url.password, decodeURIComponent(url.password))
+  } catch { /* The configuration error will explain an invalid URL. */ }
+  for (const secret of secrets) {
+    if (secret) message = message.split(secret).join('[redacted]')
+  }
+  return message.replace(/postgres(?:ql)?:\/\/[^\s"'<>]+/gi, '[redacted database URL]')
+}
+
 if (require.main === module) void bootstrap().catch((error: NodeJS.ErrnoException) => {
   if (error.code === 'EADDRINUSE') {
     console.error('Port ' + (process.env.PORT ?? 3000) + ' is already in use. If Street Racer is already running, use the existing server; otherwise stop the process using that port and retry.')
   } else {
-    console.error('API startup failed. Check environment settings, database availability and migrations.')
+    console.error('API startup failed: ' + startupErrorMessage(error))
   }
   process.exitCode = 1
 })
