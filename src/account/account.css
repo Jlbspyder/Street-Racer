@@ -1,16 +1,158 @@
-﻿.account-launch{position:absolute;left:40px;top:215px;font-size:10px;z-index:2}
-.account-panel{width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #698195;border-radius:12px;padding:24px;background:#152638;color:#f2f5ed;font:14px/1.5 Barlow,Arial,sans-serif}
-.account-panel::backdrop{background:#08121be6}
-.account-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.account-panel h2{margin:0;font-size:24px}.account-panel h3{margin:0 0 12px;font-size:17px;color:#edfa68}
-.account-panel section{margin-top:24px;padding-top:18px;border-top:1px solid #ffffff24}
-.account-panel label{display:block;margin:12px 0}.account-panel input,.account-panel select{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #647689;border-radius:5px;background:#0e1c2a;color:#fff;font:inherit}
-.account-panel button{border:1px solid #79909e;border-radius:5px;background:#253e52;padding:10px 14px;margin:4px 6px 4px 0;min-height:44px}
-.account-panel .account-primary{background:#edfa68;color:#142237}.account-error{color:#ffb4a0}
-.account-records{display:grid;grid-template-columns:1fr 1fr;gap:12px}.account-panel ul{list-style:none;padding:0}.account-panel li{padding:8px 0;border-bottom:1px solid #ffffff15}.account-panel li small{display:block;color:#bdcbd4}
-.account-pages{display:flex;align-items:center;justify-content:space-between;font-size:12px}.leaderboard{padding:0;list-style:none}.leaderboard li{display:flex;justify-content:space-between;gap:12px}
-.save-run p{font-size:12px}.finish-run{display:block;margin-top:10px}.menu{max-height:calc(100dvh - 220px);overflow:auto;padding-right:8px}
-.game-finished .route-map,.game-finished footer{display:none}
-@media(any-pointer:coarse),(max-width:900px){.account-launch{left:16px;top:122px;min-height:40px;padding:8px}.menu{top:176px;max-height:calc(100dvh - 190px)}.account-panel{padding:16px}}
-@media(max-height:500px){.account-launch{left:auto;right:125px;top:66px;min-height:36px}.menu{top:112px;max-height:calc(100dvh - 124px)}}
-@media(min-width:1200px) and (min-height:501px){.account-launch{top:auto;right:auto;bottom:80px;left:40px}}
+﻿.account-launch {
+  position: absolute;
+  left: 40px;
+  top: 215px;
+  font-size: 10px;
+  z-index: 2;
+}
+.account-panel {
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border: 1px solid #698195;
+  border-radius: 12px;
+  padding: 24px;
+  background: #152638;
+  color: #f2f5ed;
+  font:
+    14px/1.5 Barlow,
+    Arial,
+    sans-serif;
+}
+.account-panel::backdrop {
+  background: #08121be6;
+}
+.account-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.account-panel h2 {
+  margin: 0;
+  font-size: 24px;
+}
+.account-panel h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: #edfa68;
+}
+.account-panel section {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff24;
+}
+.account-panel label {
+  display: block;
+  margin: 12px 0;
+}
+.account-panel input,
+.account-panel select {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 11px;
+  border: 1px solid #647689;
+  border-radius: 5px;
+  background: #0e1c2a;
+  color: #fff;
+  font: inherit;
+}
+.account-panel button {
+  border: 1px solid #79909e;
+  border-radius: 5px;
+  background: #253e52;
+  padding: 10px 14px;
+  margin: 4px 6px 4px 0;
+  min-height: 44px;
+}
+.account-panel .account-primary {
+  background: #edfa68;
+  color: #142237;
+}
+.account-error {
+  color: #ffb4a0;
+}
+.account-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.account-panel ul {
+  list-style: none;
+  padding: 0;
+}
+.account-panel li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ffffff15;
+}
+.account-panel li small {
+  display: block;
+  color: #bdcbd4;
+}
+.account-pages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.leaderboard {
+  padding: 0;
+  list-style: none;
+}
+.leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.save-run p {
+  font-size: 12px;
+}
+.finish-run {
+  display: block;
+  margin-top: 10px;
+}
+.menu {
+  max-height: calc(100dvh - 220px);
+  overflow: auto;
+  padding-right: 8px;
+}
+.game-finished .route-map,
+.game-finished footer {
+  display: none;
+}
+@media (any-pointer: coarse), (max-width: 900px) {
+  .account-launch {
+    left: 16px;
+    top: 122px;
+    min-height: 40px;
+    padding: 8px;
+  }
+  .menu {
+    top: 176px;
+    max-height: calc(100dvh - 190px);
+  }
+  .account-panel {
+    padding: 16px;
+  }
+}
+@media (max-height: 500px) {
+  .account-launch {
+    left: auto;
+    right: 125px;
+    top: 66px;
+    min-height: 36px;
+  }
+  .menu {
+    top: 112px;
+    max-height: calc(100dvh - 124px);
+  }
+}
+@media (min-width: 1200px) and (min-height: 501px) {
+  .account-launch {
+    top: auto;
+    right: auto;
+    bottom: 80px;
+    left: 40px;
+  }
+}

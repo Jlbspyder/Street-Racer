@@ -149,7 +149,7 @@ export default function App() {
             W / UP TO ACCELERATE · A D / LEFT RIGHT TO STEER
           </small>
           <small className="hint touch-hint">HOLD GAS + AN ARROW TO DRIVE. LANDSCAPE RECOMMENDED.</small>
-          <a className="audio-credit" href={`${import.meta.env.BASE_URL}audio/credits.txt`} target="_blank" rel="noreferrer">Engine recording: qubodup · CC BY 3.0</a>
+          {/* <a className="audio-credit" href={`${import.meta.env.BASE_URL}audio/credits.txt`} target="_blank" rel="noreferrer">Engine recording: qubodup · CC BY 3.0</a> */}
         </section>
       )}
       <RouteMap />
